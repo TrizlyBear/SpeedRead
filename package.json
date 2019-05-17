@@ -1,0 +1,23 @@
+{
+  "name": "speedread",
+  "version": "1.0.0",
+  "description": "Read fast as fk",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "run": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "speedread"
+  },
+  "keywords": [
+    "speed",
+    "read"
+  ],
+  "author": "Tristan Schmidt",
+  "license": "MIT"
+}
