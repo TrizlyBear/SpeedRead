@@ -12,4 +12,4 @@ function read() {
 
 }
 
-document.createElement()
+$(".submitbutton").click(submit())
