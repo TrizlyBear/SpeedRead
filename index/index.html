@@ -8,10 +8,57 @@
 </head>
 <body>
     <p class="name">Speed Read</p>
-    <input type="text" class="input">
-    <button class="submitbutton" id="submit">Read</button>
-    <p class="reading"></p>
-    <script>require('./index.js')</script>
+    <input type="text" class="input" id="input" placeholder="Input">
+    <input type="number" placeholder="WPM" id="wpm">
+    <button class="submitbutton" id="submit" onclick="submit()">Read</button>
+    <p class="reading" id="reading"></p>
+    <script>
+        var input = document.getElementById("input")
+        var wpminputstring = document.getElementById("wpm")
+        var submitbutton = document.getElementById("submit")
+        var readoutput = document.getElementById("reading")
+        
+        // submitbutton.addEventListener("click", submit())
+        var wordarray;
+        var inputtext;
+        var wordarray = new Array();
+        var i = -1;
+        var theinterval;
+
+        function submit() {
+            var wpminput = parseInt(wpminputstring.value);
+            var wpm = 60 / wpminput * 1000;
+            theinterval = setInterval(read, wpm);
+            input.style.display = "none";
+            submitbutton.style.display = "none";
+            var inputtext = input.value;
+            wordarray = inputtext.split(' ');
+            readoutput.style.display = "block";
+            wpminputstring.style.display = "none";
+            console.log(wpminput);
+            i = 0;
+    
+
+        }
+        
+        function read() {
+            if (i < wordarray.length) {
+                readoutput.innerHTML = wordarray[i];
+                i++;
+            } else if (i == wordarray.length) {
+                input.style.display = "block";
+                submitbutton.style.display = "block";
+                readoutput.style.display = "none";
+                i = 0;
+                wordarray = [];
+                readoutput.value = "";
+                input.value = "";
+                wpminputstring.style.display = "block";
+                clearInterval(theinterval);
+            }
+            
+        }
+    </script>
     
 </body>
 </html>

@@ -1,15 +1,16 @@
 var input = document.getElementsByClassName('input')
 var submitbutton = document.getElementsByClassName('submitbutton')
 
+submitbutton.addEventListener("click", submit())
+
 function submit() {
     setInterval(read, 1000)
-    input.setPropert('display', 'none')
-    submitbutton.setPropert('display', 'none')
+    input.style.display = "none";
+    submitbutton.style.display = "none";
+    var inputtext = input.value;
+    var wordarray = inputtext.split(' ');
 }
 
 function read() {
-    const wordstoread = input.value.split(' ');
-
+    
 }
-
-$(".submitbutton").click(submit())
