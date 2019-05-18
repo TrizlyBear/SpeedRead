@@ -5,7 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "electron": "^5.0.1",
-    "jquery": "^3.4.1"
+    "wpm-calculator": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {
