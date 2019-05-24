@@ -1,7 +1,151 @@
 .input{
-    height: 200px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 100px;
+    border-style: solid;
+    border-color: darkgrey;
+    margin-top: 20px;
+}
+
+html, body{
+    overflow: hidden;
+    
+}
+body {
+    /* background: #FFF; */
+    border-radius: 4px;
+    
+}
+
+.white{
+    background: white;
+    height: 900%;
+}
+
+.titlebar{
+    width: device-width;
+    height: 30px;
+    background: #E6314B
+}
+
+
+.error{
+    display: none;
+    font-family: open-sans, sans-serif;
+
+    font-weight: 700;
+
+    font-style: normal;
+    max-width: 429.203px;
+    color: #E6314B;
+    margin-top: 30px;
 }
 
 .reading{
     display: none;
+    border-style: none;
+    margin-top: 20px;
+    font-family: open-sans, sans-serif;
+
+    font-weight: 700;
+
+    font-style: normal;
+    font-size: 50px;
+}
+
+.wpm{
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 100px;
+    margin-left: 10px;
+    border-style: solid;
+    border-color: darkgrey;
+}
+
+.name{
+    font-family: open-sans, sans-serif;
+
+    font-weight: 700;
+
+    font-style: normal;
+    display: inline;
+}
+
+.submitbutton{
+    height: 34px;
+    margin-left: 10px;
+    border-radius: 100px;
+    padding: 10px;
+    background: linear-gradient(45deg, #D4145A , rgb(251, 81, 59));
+    border-style: none;
+    color: aliceblue;
+}
+
+.btns{
+    margin-top: 10px !important;
+    margin-left: 10px;
+}
+.min{
+    height: 20px;
+    width: 20px;
+    background: rgb(50, 215, 75);
+    border-radius: 100px;
+    border-style: none;
+}
+
+
+.close{
+    height: 20px;
+    width: 20px;
+    background: rgb(255, 69, 58);
+    border-radius: 100px;
+    border-style: none;
+}
+
+.red{
+    color: #E6314B !important;
+    font-family: open-sans, sans-serif;
+
+    font-weight: 700;
+
+    font-style: normal;
+    display: inline-block;
+}
+
+.main{
+    padding-left: 20%;
+    padding-top: 15%;
+    padding-bottom: 100%;
+    background: #FFF;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 560px) {
+    .main{
+        margin: 10px;
+    }
+    .input{
+        display: block !important;
+        margin-top: 20px;
+    }
+
+    .wpm{
+        display: block !important;
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+    .submitbutton{
+        margin-left: 0px;
+        margin-top: 20px;
+        display: block !important;
+    }
+    .main{
+        margin: 2%;
+        height: 100%;
+        margin-top: 0 !important;
+    }
 }

@@ -5,40 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Speed Read</title>
+    <link rel="stylesheet" href="https://use.typekit.net/tkf2qeu.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <p class="name">Speed Read</p>
-    <input type="text" class="input" id="input" placeholder="Input">
-    <input type="number" placeholder="WPM" id="wpm">
-    <button class="submitbutton" id="submit" onclick="submit()">Read</button>
-    <p class="reading" id="reading"></p>
+    <div class="titlebar" id="titlebar" style="-webkit-app-region: drag">
+        <div id="title-bar-btns" class="btns">
+            <button id="min-btn" class="min" onclick="minimize()">-</button>
+
+            <button id="close-btn" class="close" onclick="close()">x</button>
+       </div>
+    </div>
+    <div class="white">
+    <div class="main">
+        <p class="name">Speed <div class="red">Read</div></p>
+        <input type="text" class="input" id="input" placeholder="Input">
+        <input type="number" placeholder="WPM" id="wpm" class="wpm">
+        <button class="submitbutton" id="submit" onclick="submit()">Read</button>
+        <p class="reading" id="reading"></p>
+        <p class="error" id="error"><b>Error!</b> Please provide information in the inputs above.</p>
+    </div>
+    </div>
     <script>
+            const {BrowserWindow} = require('electron').remote
+
+            function minimize () {
+                var minbtn = document.getElementById("min-btn")
+                var window = BrowserWindow.getFocusedWindow();
+                window.minimize();
+            }
+
+            function close () {
+                var closebtn = document.getElementById("close-btn")
+                var window = BrowserWindow.getFocusedWindow();
+                window.close();
+            }
+            
         var input = document.getElementById("input")
         var wpminputstring = document.getElementById("wpm")
         var submitbutton = document.getElementById("submit")
         var readoutput = document.getElementById("reading")
+        var error = document.getElementById("error")
         
         // submitbutton.addEventListener("click", submit())
         var wordarray;
         var inputtext;
         var wordarray = new Array();
-        var i = -1;
+        var i = 0;
         var theinterval;
 
         function submit() {
-            var wpminput = parseInt(wpminputstring.value);
-            var wpm = 60 / wpminput * 1000;
-            theinterval = setInterval(read, wpm);
-            input.style.display = "none";
-            submitbutton.style.display = "none";
             var inputtext = input.value;
             wordarray = inputtext.split(' ');
-            readoutput.style.display = "block";
-            wpminputstring.style.display = "none";
-            console.log(wpminput);
-            i = 0;
-    
-
+            console.log(wordarray.length)
+            if (!input.value || !wpminputstring.value || wordarray.length == 1) {
+                error.style.display = "block";
+            } else {
+                var wpminput = parseInt(wpminputstring.value);
+                var wpm = 60 / wpminput * 1000;
+                theinterval = setInterval(read, wpm);
+                input.style.display = "none";
+                submitbutton.style.display = "none";
+                
+                
+                readoutput.style.display = "block";
+                wpminputstring.style.display = "none";
+                console.log(wpminput);
+                i = 0;
+                error.style.display = "none";
+            }
         }
         
         function read() {
@@ -46,14 +81,14 @@
                 readoutput.innerHTML = wordarray[i];
                 i++;
             } else if (i == wordarray.length) {
-                input.style.display = "block";
-                submitbutton.style.display = "block";
+                input.style.display = "inline-block";
+                submitbutton.style.display = "inline-block";
                 readoutput.style.display = "none";
                 i = 0;
                 wordarray = [];
                 readoutput.value = "";
                 input.value = "";
-                wpminputstring.style.display = "block";
+                wpminputstring.style.display = "inline-block";
                 clearInterval(theinterval);
             }
             
