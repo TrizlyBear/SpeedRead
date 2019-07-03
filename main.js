@@ -6,6 +6,8 @@ const {app, BrowserWindow} = electron;
 
 let index;
 
+
+
 app.on('ready', function(){
    index = new BrowserWindow({
        webPreferences: {nodeIntegration: true},
@@ -15,12 +17,18 @@ app.on('ready', function(){
        minHeight: 325,
        minWidth: 680,
        frame: false,
-       transparent: true,});
+       show: false,
+       icon: __dirname + '/src/icon/logo.ico'
+        });
        index.loadURL(url.format({
            pathname: path.join(__dirname, 'index/index.html'),
            protocol: 'file:',
            slashes: true
        }))
+    index.on('ready-to-show', function() { 
+        index.show(); 
+        index.focus(); 
+      });
        // index.setMenu(null);
 })
 

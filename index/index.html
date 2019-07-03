@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="titlebar" id="titlebar" style="-webkit-app-region: drag">
-        <div id="title-bar-btns" class="btns">
-            <button id="min-btn" class="min" onclick="minimize()">-</button>
+        <div id="titlebar" class="titlebar">
+            <button id="max-btn"></button>
+            
+            <button id="min-btn"></button>
+            
+            <button id="close-btn"></button>
+        </div>
 
-            <button id="close-btn" class="close" onclick="close()">x</button>
-       </div>
-    </div>
     <div class="white">
     <div class="main">
         <p class="name">Speed <div class="red">Read</div></p>
@@ -27,19 +28,26 @@
     </div>
     </div>
     <script>
-            const {BrowserWindow} = require('electron').remote
+            const remote = require('electron').remote
 
-            function minimize () {
-                var minbtn = document.getElementById("min-btn")
-                var window = BrowserWindow.getFocusedWindow();
-                window.minimize();
-            }
+        document.getElementById("min-btn").addEventListener("click", function (e) {
+            var window = remote.getCurrentWindow();
+            window.minimize(); 
+        });
 
-            function close () {
-                var closebtn = document.getElementById("close-btn")
-                var window = BrowserWindow.getFocusedWindow();
-                window.close();
+        document.getElementById("max-btn").addEventListener("click", function (e) {
+            var window = remote.getCurrentWindow();
+            if (!window.isMaximized()) {
+                window.maximize();          
+            } else {
+                window.unmaximize();
             }
+        });
+
+        document.getElementById("close-btn").addEventListener("click", function (e) {
+            var window = remote.getCurrentWindow();
+            window.close();
+        }); 
             
         var input = document.getElementById("input")
         var wpminputstring = document.getElementById("wpm")

@@ -4,7 +4,9 @@
   "description": "Read fast as fk",
   "main": "main.js",
   "dependencies": {
+    "custom-electron-titlebar": "^3.0.10",
     "electron": "^5.0.1",
+    "electron-titlebar": "0.0.3",
     "wpm-calculator": "^1.0.0"
   },
   "devDependencies": {},

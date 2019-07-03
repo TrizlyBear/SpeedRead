@@ -1,1 +1,2 @@
 # speedread
+This is my first project in Electron, I really like the framework :D This project it basically about something I found on the web to break your reading limits. Reading without moving your eyes LOL.
